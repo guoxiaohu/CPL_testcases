@@ -1,0 +1,329 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// 27 Block Case (3 x, 3 y, 3 z) 
+
+// ---------- User Controlled values --------- //
+
+// Coordinates of each block
+
+x1  -2.0;
+x2  -0.4;
+x3   1.0;
+x4   5.0;
+
+y1    -0.3;
+y2   -0.16;
+y3    0.16;
+y4     0.3;
+
+z1   -0.8;
+z2  -0.56;
+z3  -0.24;
+z4    0.0;
+
+//Number of cells (comments below based on looking at the x-z plane i.e. along positive y)
+
+Nx12 80; // Number of cells between x1 and x2 (left blocks)
+Nx23 70; // Number of cells between x2 and x3 (central x blocks)
+Nx34 200; // Number of cells between x3 and x4 (right blocks)
+
+Ny12 7; // Number of cells between y1 and y2 (front blocks)
+Ny23 16; // Number of cells between y2 and y3 (central y blocks)
+Ny34 7;  // Number of cells between y3 and y4 (back blocks)
+
+Nz12 12; // Number of cells between z1 and z2 (bottom blocks)
+Nz23 16;   // Number of cells between z2 and z3 (central z blocks)
+Nz34 12;  // Number of cells between z3 and z4 (top blocks)
+
+// Grading
+
+Gx12 1; // Grading between x1 and x2 (left blocks)
+Gx23 1; // Grading between x2 and x3 (central x blocks)
+Gx34 1; // Grading between x3 and x4 (right blocks)
+
+Gy12 1; // Grading between y1 and y2 (front blocks)
+Gy23 1; // Grading between y2 and y3 (central y blocks)
+Gy34 1;  // Grading between y3 and y4 (back blocks)
+
+Gz12 1; // Grading between z1 and z2 (bottom blocks)
+Gz23 1;   // Grading between z2 and z3 (central z blocks)
+Gz34 1;  // Grading between z3 and z4 (top blocks)
+
+scale 1;
+
+// ---------- End of User Controlled values --------- //
+// ---------- Do not alter values below (except patch names) --------- //
+
+vertices        
+(
+
+//Ordering y1/$z1 constant x1->x4; y1 -> y4; then z1->z4
+
+    ($x1 $y1 $z1)          // 0
+    ($x2 $y1 $z1)          // 1
+    ($x3 $y1 $z1)          // 2
+    ($x4 $y1 $z1)          // 3
+
+    ($x1 $y2 $z1)          // 4
+    ($x2 $y2 $z1)          // 5
+    ($x3 $y2 $z1)          // 6
+    ($x4 $y2 $z1)          // 7
+
+    ($x1 $y3 $z1)          // 8
+    ($x2 $y3 $z1)          // 9
+    ($x3 $y3 $z1)          // 10
+    ($x4 $y3 $z1)          // 11
+
+    ($x1 $y4 $z1)          // 12
+    ($x2 $y4 $z1)          // 13
+    ($x3 $y4 $z1)          // 14
+    ($x4 $y4 $z1)          // 15
+
+
+    ($x1 $y1 $z2)          // 16
+    ($x2 $y1 $z2)          // 17
+    ($x3 $y1 $z2)          // 18
+    ($x4 $y1 $z2)          // 19
+
+    ($x1 $y2 $z2)          // 20
+    ($x2 $y2 $z2)          // 21
+    ($x3 $y2 $z2)          // 22
+    ($x4 $y2 $z2)          // 23
+
+    ($x1 $y3 $z2)          // 24
+    ($x2 $y3 $z2)          // 25
+    ($x3 $y3 $z2)          // 26
+    ($x4 $y3 $z2)          // 27
+
+    ($x1 $y4 $z2)          // 28
+    ($x2 $y4 $z2)          // 29
+    ($x3 $y4 $z2)          // 30
+    ($x4 $y4 $z2)          // 31
+
+
+    ($x1 $y1 $z3)          // 32
+    ($x2 $y1 $z3)          // 33
+    ($x3 $y1 $z3)          // 34
+    ($x4 $y1 $z3)          // 35
+
+    ($x1 $y2 $z3)          // 36
+    ($x2 $y2 $z3)          // 37
+    ($x3 $y2 $z3)          // 38
+    ($x4 $y2 $z3)          // 39
+
+    ($x1 $y3 $z3)          // 40
+    ($x2 $y3 $z3)          // 41
+    ($x3 $y3 $z3)          // 42
+    ($x4 $y3 $z3)          // 43
+
+    ($x1 $y4 $z3)          // 44
+    ($x2 $y4 $z3)          // 45
+    ($x3 $y4 $z3)          // 46
+    ($x4 $y4 $z3)          // 47
+
+
+    ($x1 $y1 $z4)          // 48
+    ($x2 $y1 $z4)          // 49
+    ($x3 $y1 $z4)          // 50
+    ($x4 $y1 $z4)          // 51
+
+    ($x1 $y2 $z4)          // 52
+    ($x2 $y2 $z4)          // 53
+    ($x3 $y2 $z4)          // 54
+    ($x4 $y2 $z4)          // 55
+
+    ($x1 $y3 $z4)          // 56
+    ($x2 $y3 $z4)          // 57
+    ($x3 $y3 $z4)          // 58
+    ($x4 $y3 $z4)          // 59
+
+    ($x1 $y4 $z4)          // 60
+    ($x2 $y4 $z4)          // 61
+    ($x3 $y4 $z4)          // 62
+    ($x4 $y4 $z4)          // 63
+    
+);
+
+blocks          
+(
+
+    // Bottom Vertical
+
+    hex (0 1 5 4 16 17 21 20) ($Nx12 $Ny12 $Nz12) simpleGrading ($Gx12 $Gy12 $Gz12)
+    hex (1 2 6 5 17 18 22 21) ($Nx23 $Ny12 $Nz12) simpleGrading ($Gx23 $Gy12 $Gz12)
+    hex (2 3 7 6 18 19 23 22) ($Nx34 $Ny12 $Nz12) simpleGrading ($Gx34 $Gy12 $Gz12)
+
+    hex (4 5 9 8 20 21 25 24) ($Nx12 $Ny23 $Nz12) simpleGrading ($Gx12 $Gy23 $Gz12)
+    hex (5 6 10 9 21 22 26 25) ($Nx23 $Ny23 $Nz12) simpleGrading ($Gx23 $Gy23 $Gz12)
+    hex (6 7 11 10 22 23 27 26) ($Nx34 $Ny23 $Nz12) simpleGrading ($Gx34 $Gy23 $Gz12)
+
+    hex (8 9 13 12 24 25 29 28) ($Nx12 $Ny34 $Nz12) simpleGrading ($Gx12 $Gy34 $Gz12)
+    hex (9 10 14 13 25 26 30 29) ($Nx23 $Ny34 $Nz12) simpleGrading ($Gx23 $Gy34 $Gz12)
+    hex (10 11 15 14 26 27 31 30) ($Nx34 $Ny34 $Nz12) simpleGrading ($Gx34 $Gy34 $Gz12)
+
+    // Middle Vertical
+
+    hex (16 17 21 20 32 33 37 36) ($Nx12 $Ny12 $Nz23) simpleGrading ($Gx12 $Gy12 $Gz23)
+    hex (17 18 22 21 33 34 38 37) ($Nx23 $Ny12 $Nz23) simpleGrading ($Gx23 $Gy12 $Gz23)
+    hex (18 19 23 22 34 35 39 38) ($Nx34 $Ny12 $Nz23) simpleGrading ($Gx34 $Gy12 $Gz23)
+
+    hex (20 21 25 24 36 37 41 40) ($Nx12 $Ny23 $Nz23) simpleGrading ($Gx12 $Gy23 $Gz23)
+    hex (21 22 26 25 37 38 42 41) ($Nx23 $Ny23 $Nz23) simpleGrading ($Gx23 $Gy23 $Gz23)
+    hex (22 23 27 26 38 39 43 42) ($Nx34 $Ny23 $Nz23) simpleGrading ($Gx34 $Gy23 $Gz23)
+
+    hex (24 25 29 28 40 41 45 44) ($Nx12 $Ny34 $Nz23) simpleGrading ($Gx12 $Gy34 $Gz23)
+    hex (25 26 30 29 41 42 46 45) ($Nx23 $Ny34 $Nz23) simpleGrading ($Gx23 $Gy34 $Gz23)
+    hex (26 27 31 30 42 43 47 46) ($Nx34 $Ny34 $Nz23) simpleGrading ($Gx34 $Gy34 $Gz23)
+
+    // Top Vertical
+
+    hex (32 33 37 36 48 49 53 52) ($Nx12 $Ny12 $Nz34) simpleGrading ($Gx12 $Gy12 $Gz34)
+    hex (33 34 38 37 49 50 54 53) ($Nx23 $Ny12 $Nz34) simpleGrading ($Gx23 $Gy12 $Gz34)
+    hex (34 35 39 38 50 51 55 54) ($Nx34 $Ny12 $Nz34) simpleGrading ($Gx34 $Gy12 $Gz34)
+
+    hex (36 37 41 40 52 53 57 56) ($Nx12 $Ny23 $Nz34) simpleGrading ($Gx12 $Gy23 $Gz34)
+    hex (37 38 42 41 53 54 58 57) ($Nx23 $Ny23 $Nz34) simpleGrading ($Gx23 $Gy23 $Gz34)
+    hex (38 39 43 42 54 55 59 58) ($Nx34 $Ny23 $Nz34) simpleGrading ($Gx34 $Gy23 $Gz34)
+
+    hex (40 41 45 44 56 57 61 60) ($Nx12 $Ny34 $Nz34) simpleGrading ($Gx12 $Gy34 $Gz34)
+    hex (41 42 46 45 57 58 62 61) ($Nx23 $Ny34 $Nz34) simpleGrading ($Gx23 $Gy34 $Gz34)
+    hex (42 43 47 46 58 59 63 62) ($Nx34 $Ny34 $Nz34) simpleGrading ($Gx34 $Gy34 $Gz34)
+
+
+
+);
+
+edges           
+(
+);
+
+patches         
+(
+    patch inlet
+    (
+        (0 4 20 16)
+        (4 8 24 20)
+        (8 12 28 24)
+        (16 20 36 32)
+        (20 24 40 36)
+        (24 28 44 40)
+        (32 36 52 48)
+        (36 40 56 52)
+        (40 44 60 56)
+    )
+    wall bottom 
+    (
+        (0 1 5 4)
+        (1 2 6 5)
+        (2 3 7 6)
+        (4 5 9 8)
+        (5 6 10 9)
+        (6 7 11 10)
+        (8 9 13 12)
+        (9 10 14 13)
+        (10 11 15 14)
+    )
+    patch outlet
+    (
+        (3 7 23 19)
+        (7 11 27 23)
+        (11 15 31 27)
+        (19 23 39 35)
+        (23 27 43 39)
+        (27 31 47 43)
+        (35 39 55 51)
+        (39 43 59 55)
+        (43 47 63 59)
+    )
+
+    wall top
+    (
+        (48 49 53 52)
+        (49 50 54 53)
+        (50 51 55 54)
+        (52 53 57 56)
+        (53 54 58 57)
+        (54 55 59 58)
+        (56 57 61 60)
+        (57 58 62 61)
+        (58 59 63 62)
+    )
+    
+    wall front
+    (
+        (0 1 17 16)
+        (1 2 18 17)
+        (2 3 19 18)
+        (16 17 33 32)
+        (17 18 34 33)
+        (18 19 35 34)
+        (32 33 49 48)
+        (33 34 50 49)
+        (34 35 51 50)
+    )
+
+    wall back
+    (
+        (12 13 29 28)
+        (13 14 30 29)
+        (14 15 31 30)
+        (28 29 45 44)
+        (29 30 46 45)
+        (30 31 47 46)
+        (44 45 61 60)
+        (45 46 62 61)
+        (46 47 63 62)
+    )
+
+    /*// Patches which are shared with inner domain
+
+    patch out_to_in_inlet
+    (
+        (21 25 41 37)
+    )    
+
+    patch out_to_in_outlet
+    (
+        (22 26 42 38)
+    )    
+
+    patch out_to_in_bottom
+    (
+        (21 25 26 22)
+    )    
+
+    patch out_to_in_top
+    (
+        (41 42 38 37)
+    )    
+
+    patch out_to_in_front
+    (
+        (21 37 38 22)
+    )  
+  
+    patch out_to_in_back
+    (
+        (25 41 42 26)
+    )  */
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
